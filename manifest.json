@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "HerpDerpTube",
+    "description": "HerpDerp filter for YouTube comments",
+    "version": "1.0",
+    "icons": {
+	"48": "images/48.png",
+	"96": "images/96.png"
+    },
+    "web_accessible_resources": [
+	"lib/jquery-2.0.3.min.js",
+	"lib/jquery-2.0.3.min.map"
+    ],
+    "content_scripts": [{
+	"matches": [
+	    "*://apis.google.com/*youtube*"
+	],
+	"js": [
+	    "lib/jquery-2.0.3.min.js",
+	    "src/herpderp.js"
+	],
+	"all_frames": true,
+	"run_at": "document_idle"
+    }],
+    "permissions": [
+	"https://apis.google.com/"
+    ]
+}

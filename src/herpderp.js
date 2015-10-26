@@ -1,4 +1,6 @@
 (function() {
+    var selector = '#yt-comments-list div.comment-text-content';
+
     function randomDerp()
     {
 	this.derpOriginal = $(this).html();
@@ -7,7 +9,7 @@
 	    $(this).html(this.derpOriginal);
 	});
 
-	var randomLength = (Math.floor(Math.random() * 20) + 1);
+	var randomLength = (Math.floor(Math.random() * 4) + 1);
 	var wordArray = new Array();
 	var x;
 
@@ -24,10 +26,10 @@
     }
 
     // only select un-derped elements
-    $('div .Ct').not('.derped').html(randomDerp);
+    $(selector).not('.derped').html(randomDerp);
 
     setInterval(function() {
 	// only select un-derped elements
-	$('div .Ct').not('.derped').html(randomDerp);
+	$(selector).not('.derped').html(randomDerp);
     }, 250);
 })();

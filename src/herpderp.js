@@ -9,20 +9,35 @@
 	    $(this).html(this.derpOriginal);
 	});
 
-	var randomLength = (Math.floor(Math.random() * 4) + 1);
-	var wordArray = new Array();
-	var x;
+	var preprocessed = this.derpOriginal
+	  .replace(/<[^>]+>/g, '') // remove links etc,
+	  .replace(/&nbsp;/g, ' '), // non-breaking space crap
 
-	for (x = 0; x < randomLength; x++)
-	{
-	    randomBit = (Math.floor(Math.random() * 2));
-	    wordArray[x] = (randomBit === 1 ? "herp" : "derp");
+	  words = preprocessed.split(/([\(\).,?!:; \n]+)/), // split by punctuation
+	  buf = [],
+	  i;
+
+
+	for (i = 0; i < words.length; i++) {
+	  if (i % 2 == 1) {
+	    buf.push(words[i]);
+	  } else {
+	    if (words[i] !== '\ufeff') {
+	      if (words[i] === 'is' || words[i] === 'a' || words[i] === 'I' || words[i] === 'the') {
+		buf.push(words[i]);
+	      } else if (words[i][0] === words[i][0].toUpperCase()) {
+		buf.push(Math.random() > 0.5 ? 'Herp' : 'Derp');
+	      } else {
+		buf.push(Math.random() > 0.5 ? 'herp' : 'derp');
+	      }
+	    }
+	  }
 	}
 
 	// add derped class
 	$(this).addClass("derped");
 
-	return '<span>' + wordArray.join(' ') + '</span>';
+	return '<span>' + buf.join('') + '</span>';
     }
 
     // only select un-derped elements

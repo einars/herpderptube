@@ -22,7 +22,7 @@
 	  if (i % 2 == 1) {
 	    buf.push(words[i]);
 	  } else {
-	    if (words[i] !== '\ufeff') {
+	    if (words[i] !== '' && words[i] !== '\ufeff') {
 	      if (words[i] === 'is' || words[i] === 'a' || words[i] === 'I' || words[i] === 'the') {
 		buf.push(words[i]);
 	      } else if (words[i][0] === words[i][0].toUpperCase()) {

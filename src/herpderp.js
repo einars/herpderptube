@@ -1,5 +1,5 @@
 (function() {
-    var selector = '#yt-comments-list div.comment-text-content';
+    var selector = 'div.comment-renderer-text-content';
 
     function randomDerp()
     {
